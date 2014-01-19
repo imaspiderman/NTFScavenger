@@ -18,19 +18,18 @@ public class NTFScavenger {
 			return;
 		}
 		
-		int sectorSize = 512;
 		try{		
 			for(int i=0; i<args.length; i++){
 				if(args[i].toLowerCase().equals("-input")){
 					_fileName = args[i+1];
 				}
-				if(args[i].toLowerCase().equals("-sector")){
-					sectorSize = Integer.parseInt(args[i+1]);
-				}
 			}
 			
 			//Open the input file
 			_fis = new java.io.FileInputStream(_fileName);
+			
+			//Read Boot Sector
+			NTFSDefinitions.BootSectorLayout.ReadData(_fis, 1024);
 			
 		}catch(Exception ex){
 			System.out.println(ex.toString());
