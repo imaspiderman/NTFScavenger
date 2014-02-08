@@ -115,6 +115,15 @@ public class DiskLayout {
 		for(int i=length-1; i>=0; i--){
 			value = (value << 8) | buffer[i];
 		}
+		if (length == 1){
+			value = (value << 56) >> 56;
+		}
+		if (length == 2){
+			value = (value << 48) >> 48;
+		}
+		if (length == 4){
+			value = (value << 32) >> 32;
+		}
 		
 		return value;
 	}
