@@ -9,7 +9,7 @@ public class NTFSDefinitions {
 	public static DiskLayout StandardAttributeResidentLayout = new DiskLayout(0x19,11);
 	public static DiskLayout StandardAttributeNonResidentLayout = new DiskLayout(0x40,15);
 	
-	public NTFSDefinitions(){
+	public static void init(){
 		//Boot sector fields for BPB
 		NTFSDefinitions.BootSectorLayout.AddLayoutField("BytesPerSector", 0x0B, 2);
 		NTFSDefinitions.BootSectorLayout.AddLayoutField("SectorsPerCluster", 0x0D, 1);
@@ -67,19 +67,5 @@ public class NTFSDefinitions {
 		NTFSDefinitions.StandardAttributeNonResidentLayout.AddLayoutField("AllocatedSizeOfAttribute", 0x28, 8);
 		NTFSDefinitions.StandardAttributeNonResidentLayout.AddLayoutField("RealSizeOfAttribute", 0x30, 8);
 		NTFSDefinitions.StandardAttributeNonResidentLayout.AddLayoutField("InitializedDataSizeOfStream", 0x38, 8);
-	}
-	
-	/**********
-	 * Displays an array of bytes in raw hex notation
-	 * @param b The byte array
-	 * @param length The number of bytes within the array to read
-	 * @return String with each byte shown in hex format
-	 */
-	public String showRaw(byte[] b, int length){
-		String s = "0x";
-		for(int i=0; i<length; i++){
-			s += String.format("%02X ", b[i]);
-		}
-		return s;
 	}
 }
