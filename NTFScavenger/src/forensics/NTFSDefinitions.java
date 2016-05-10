@@ -11,6 +11,7 @@ public class NTFSDefinitions {
 	
 	public static void init(){
 		//Boot sector fields for BPB
+		NTFSDefinitions.BootSectorLayout.AddLayoutField("Beginning", 0x00, 11);
 		NTFSDefinitions.BootSectorLayout.AddLayoutField("BytesPerSector", 0x0B, 2);
 		NTFSDefinitions.BootSectorLayout.AddLayoutField("SectorsPerCluster", 0x0D, 1);
 		NTFSDefinitions.BootSectorLayout.AddLayoutField("ReservedSectors", 0x0E, 2);
